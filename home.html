@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Danya Cebus</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+	<h1>חיפוש אתר בנייה</h1>
+	<div style="position: relative; display: inline;">
+		<input id="searchData" type="text" placeholder="שם/מספר פרוייקט">
+		<!-- <button id="search">חפש</button> -->
+	</div>
+	<div id="resultTable">
+		<table>
+			<tr>
+				<th>שם</th>
+				<th>מספר פרוייקט</th>
+				<th>ip</th>
+				<th>מה לרשום בwaze</th>
+				<th>מספר קו</th>
+				<th>מספר סים</th>
+				<th>סוג מודם</th>
+				<th>רוחב פס</th>
+				<th>פעולות</th>
+			</tr>
+			<tr id="resultRow">
+			</tr>
+		</table>
+	</div>
+	<button id="showForm">+</button>
+	<div id="formParent">
+		<form id="addPlaceForm" action="">
+			<h2 id="formTitle">הוסף אתר בנייה</h2>
+			<label>שם פרוייקט</label>
+			<input type="text" name="name" autocomplete="off">
+			<label>מספר פרוייקט</label>
+			<input type="text" name="number" autocomplete="off">
+			<label>ip</label>
+			<input type="text" name="ip" autocomplete="off">
+			<label>מספר קו</label>
+			<input type="text" name="lineNum" autocomplete="off">
+			<label>מספר סים</label>
+			<input type="text" name="simNum" autocomplete="off">
+			<label>סוג מודם</label>
+			<input type="text" name="modemType" autocomplete="off">
+			<label>רוחב פס</label>
+			<input type="text" name="bandwidth" autocomplete="off">
+			<label>מה לרשום בwaze</label>
+			<input type="text" name="waze" autocomplete="off">
+			<input type="submit" value="הוסף אתר" id="createNewContact">
+
+		</form>
+		<p class="msg" id="errorMsg"></p>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>

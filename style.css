@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "arimo";
+  src: url(Arimo-VariableFont_wght.ttf);
+}
+*{
+	font-family: "arimo";
+}
+body{
+	direction: rtl;
+	padding: 25px;
+	background-color: rgb(255, 255, 255);
+}
+#searchData{
+	width: 300px;
+	height: 30px;
+	border-radius: 30px;
+	/* border: none; */
+	border: solid 1px black;
+	outline: none;
+	padding: 5px;
+	padding-right: 20px;
+	padding-left: 20px;
+	font-size: 18px;
+}
+#search{
+	height: 30px;
+	position:absolute;
+	/* left: 0px; */
+	top: -5px;
+}
+#resultTable{
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
+	
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+#actions>button{
+	margin: 5px;
+	padding: 5px;
+}
+#showForm{
+	width: 50px;
+	height: 50px;
+	background-color: rgb(158, 226, 56);
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
+	margin-top: 80px;
+	margin-bottom: 10px;
+	display: block;
+}
+#formParent{
+	display: none;
+}
+#addPlaceForm {
+	border-radius: 5px;
+	background-color: #dddddd;
+	padding: 20px;
+	border: 2px solid black;
+	width: 400px;
+	box-shadow: 3px 4px 16px -3px #000000;
+}
+#addPlaceForm > input{
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+}
+#addPlaceForm > input[type="submit"]{
+	cursor: pointer;
+}
