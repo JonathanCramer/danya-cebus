@@ -13,51 +13,59 @@ $("#searchData").on('keypress', function (e) {
 
 function showResult() {
 	$('#resultTable').css('display', 'flex');
-	res = JSON.parse(httpGet($("#searchData").val()));
-	$("#resultRow").empty()
-	$("#resultRow").append("<td>" + res.name + "</td>");
-	$("#resultRow").append("<td>" + res.number + "</td>");
-	$("#resultRow").append("<td>" + res.ip + "</td>");
-	$("#resultRow").append("<td>" + res.waze + "</td>");
-	$("#resultRow").append("<td>" + res.lineNum + "</td>");
-	$("#resultRow").append("<td>" + res.simNum + "</td>");
-	$("#resultRow").append("<td>" + res.modemNum + "</td>");
-	$("#resultRow").append("<td>" + res.bandwidth + "</td>");
-	$("#resultRow").append("<td id='actions'><button onclick=myDelete(" + res.id + ")>מחק</button><button onclick=update(" + res.id + ")>עדכן</button></td>");
+	response = JSON.parse(httpGet($("#searchData").val()));
+	$(".data").empty()
+	$(function () {
+		$.each(response, function (i, item) {
+			var $tr = $('<tr class="data">').append(
+				$('<td>').text(item.name),
+				$('<td>').text(item.projectNum),
+				$('<td>').text(item.ip),
+				$('<td>').text(item.waze),
+				$('<td>').text(item.lineNum),
+				$('<td>').text(item.simNum),
+				$('<td>').text(item.modemNum),
+				$('<td>').text(item.bandwidth),
+				$("<td id='actions'><button onclick=myDelete(" + item.id + ")>מחק</button>"), //<button onclick=myUpdate(" + item.id + ")>עדכן</button></td>
+			).appendTo('#resultData');
+		});
+	});
 }
 function myDelete(id) {
 	$.ajax({
 		type: "DELETE",
-		url: 'http://localhost:3000/deleteSite',
+		url: 'http://localhost:3000/deleteSite/' + id,
 		data: $("#addPlaceForm").serialize(), // serializes the form's elements.
 		success: function (data) {
 			// alert(data); // show response from the php script.
 		}
 	});
 }
-function myUpdate(id) {
-	// $("#formTitle").text("ערוך אתר בנייה");
-	$.ajax({
-		type: "POST",
-		url: 'http://localhost:3000/updateSite',
-		data: $("#addPlaceForm").serialize(), // serializes the form's elements.
-		success: function (data) {
-			// alert(data); // show response from the php script.
-		}
-	});
-}
+// function myUpdate(id) {
+// 	// $("#formTitle").text("ערוך אתר בנייה");
+// 	$.ajax({
+// 		type: "POST",
+// 		url: 'http://localhost:3000/updateSite',
+// 		data: $("#addPlaceForm").serialize(), // serializes the form's elements.
+// 		success: function (data) {
+// 			// alert(data); // show response from the php script.
+// 		}
+// 	});
+// }
 $("#showForm").click(function (e) {
 	e.preventDefault();
 	$("#formParent").show();
 });
 
 $("#addPlaceForm").submit(function (e) {
+
 	console.log($("#addPlaceForm").serialize());
 	$.ajax({
 		type: "POST",
 		url: 'http://localhost:3000/createSite',
 		data: $("#addPlaceForm").serialize(), // serializes the form's elements.
 		success: function (data) {
+			$('#addPlaceForm').trigger("reset");
 			// alert(data); // show response from the php script.
 		}
 	});
